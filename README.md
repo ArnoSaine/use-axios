@@ -86,7 +86,7 @@ function App() {
 To handle error inside a component, use `try...catch`:
 
 ```js
-function User() {
+function User({ id }) {
   try {
     const { data } = useAxios(`/api/users/${id}`);
     return <div>User: {data.first_name}</div>;
