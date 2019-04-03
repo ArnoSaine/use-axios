@@ -125,7 +125,7 @@ Remove user and update list of users:
 
 ```js
 import { Suspense } from "react";
-import useAxios from "use-axios";
+import useAxios, { reload } from "use-axios";
 import { delete as del } from "axios";
 
 function Users() {
