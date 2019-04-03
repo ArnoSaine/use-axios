@@ -16,9 +16,20 @@
     "preversion": "npm run lint",
     "start": "npm run inbuild -- --watch"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "hooks",
+    "axios"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArnoSaine/use-axios.git"
+  },
   "license": "ISC",
+  "author": {
+    "name": "Arno Saine",
+    "email": "arno@mowhi.com"
+  },
   "devDependencies": {
     "axios": "^0.18.0",
     "concurrently": "^4.1.0",
