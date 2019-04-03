@@ -1,0 +1,53 @@
+{
+  "name": "use-axios",
+  "version": "0.1.0",
+  "description": "Simple Axios hook for React",
+  "main": "cjs",
+  "scripts": {
+    "build": "npm run inbuild --",
+    "dev:example": "concurrently \"npm run start\" \"npm link && cd example && npm link use-axios && npm start\"",
+    "eslint": "eslint {.,src/**}/*.{js,mjs} --fix",
+    "inbuild": "library-util babel --verbose",
+    "lint": "npm run eslint && npm run prettier",
+    "prebuild": "rimraf cjs es",
+    "prepack": "npm run build",
+    "prettier": "npm run prettier:write -- {.,src/**}/*.{js,json,mjs} !./package-lock.json",
+    "prettier:write": "prettier --config .prettierrc.js --write",
+    "preversion": "npm run lint",
+    "start": "npm run inbuild -- --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "concurrently": "^4.1.0",
+    "library-util": "^0.3.0",
+    "react": "^16.8.6"
+  },
+  "module": "es",
+  "files": [
+    "cjs",
+    "es"
+  ],
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "npm run prettier:write",
+      "git add"
+    ],
+    "*.{css,json,less,md,scss}": [
+      "npm run prettier:write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.4.2",
+    "fast-json-stable-stringify": "^2.0.0"
+  }
+}
