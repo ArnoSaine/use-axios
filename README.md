@@ -8,7 +8,7 @@ Simple Axios hook for React. Use React Suspense to show loading indicator and Er
 npm install axios use-axios
 ```
 
-## `useAxios(...args)`
+## `useAxios`
 
 #### Params
 
@@ -115,7 +115,7 @@ function User() {
 
 ## Caching
 
-Successful responses with the same (stable JSON stringified) arguments will be cached across the application. Components may rerender and call `useAxios` multiple times, and only one HTTP request is made, as long as there is some component mounted using the same request arguments.
+Successful responses with the same (stable JSON stringified) arguments will be cached across the application. Components may rerender and call `useAxios` multiple times, and only one HTTP request is made, as long as there is some component mounted using the same arguments.
 
 To reload data and update components, call `reload(...args)`.
 
