@@ -7,7 +7,7 @@ const requests = new Map();
 const updatersByKey = new Map();
 
 function request(...args) {
-  const key = stringify(...args);
+  const key = stringify(args);
   const suspender = new Promise(async resolve => {
     try {
       responses.set(key, [null, await axios(...args)]);
@@ -21,7 +21,7 @@ function request(...args) {
 }
 
 export default function useAxios(...args) {
-  const key = stringify(...args);
+  const key = stringify(args);
   const setState = useState()[1];
   useEffect(() => {
     const forceUpdate = () => setState({});
@@ -52,7 +52,7 @@ export default function useAxios(...args) {
 }
 
 export async function reload(...args) {
-  const key = stringify(...args);
+  const key = stringify(args);
   await request(...args);
   updatersByKey.get(key).forEach(forceUpdate => forceUpdate());
 }
