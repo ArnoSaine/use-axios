@@ -1,3 +1,7 @@
+# 0.1.2
+
+- Fix create key from all arguments
+
 # 0.1.1
 
 - Update dependencies
