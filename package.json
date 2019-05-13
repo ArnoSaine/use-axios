@@ -1,6 +1,6 @@
 {
   "name": "use-axios",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple Axios hook for React",
   "main": "cjs",
   "scripts": {
