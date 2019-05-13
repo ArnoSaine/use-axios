@@ -11,6 +11,8 @@ function User({ id }) {
     <div>
       User: {data.data.first_name}
       <span
+        role="img"
+        aria-label="Remove"
         onClick={async () => {
           await del(url);
           reload(url);
