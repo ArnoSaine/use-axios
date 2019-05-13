@@ -33,7 +33,7 @@
   "devDependencies": {
     "axios": "^0.18.0",
     "concurrently": "^4.1.0",
-    "library-util": "^0.3.0",
+    "library-util": "^0.4.0",
     "react": "^16.8.6"
   },
   "module": "es",
@@ -58,7 +58,7 @@
     }
   },
   "dependencies": {
-    "@babel/runtime": "^7.4.3",
+    "@babel/runtime": "^7.4.4",
     "fast-json-stable-stringify": "^2.0.0"
   }
 }
