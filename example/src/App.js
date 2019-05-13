@@ -37,13 +37,11 @@ function UserHandleError({ id }) {
         <p>
           <strong>Oops! A request error occurred!</strong>
         </p>
-        <p>
-          <pre>
-            status: {error.response.status}
-            {'\n'}
-            statusText: {error.response.statusText}
-          </pre>
-        </p>
+        <pre>
+          status: {error.response.status}
+          {'\n'}
+          statusText: {error.response.statusText}
+        </pre>
       </>
     );
   }
@@ -55,16 +53,14 @@ function MyFallbackComponent({ error, componentStack }) {
       <p>
         <strong>Oops! A request error occurred!</strong>
       </p>
-      <p>
-        <pre>
-          status: {error.response.status}
-          {'\n'}
-          statusText: {error.response.statusText}
-          {'\n'}
-          Stacktrace:
-          {componentStack}
-        </pre>
-      </p>
+      <pre>
+        status: {error.response.status}
+        {'\n'}
+        statusText: {error.response.statusText}
+        {'\n'}
+        Stacktrace:
+        {componentStack}
+      </pre>
     </>
   );
 }
