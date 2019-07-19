@@ -1,3 +1,7 @@
+# 0.2.0
+
+- Update dependencies
+
 # 0.1.3
 
 - Update readme and example
