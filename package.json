@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.5.5",
+    "@postinumero/map-get-with-default": "^0.1.0",
     "fast-json-stable-stringify": "^2.0.0"
   }
 }

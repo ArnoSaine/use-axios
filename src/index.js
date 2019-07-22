@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import stringify from 'fast-json-stable-stringify';
+import get from '@postinumero/map-get-with-default';
 
 const responses = new Map();
 const requests = new Map();
-const updatersByKey = new Map();
+const updaters = new Map();
 
 function request(...args) {
   const key = stringify(args);
@@ -20,14 +21,13 @@ function request(...args) {
   return suspender;
 }
 
+const getUpdaters = key => updaters::get(key, () => new Set());
+
 export default function useAxios(...args) {
   const key = stringify(args);
   const [, forceUpdate] = useReducer(x => x + 1, 0);
   useEffect(() => {
-    if (!updatersByKey.has(key)) {
-      updatersByKey.set(key, new Set());
-    }
-    const updaters = updatersByKey.get(key);
+    const updaters = getUpdaters(key);
     updaters.add(forceUpdate);
     return () => {
       updaters.delete(forceUpdate);
@@ -53,5 +53,5 @@ export default function useAxios(...args) {
 export async function reload(...args) {
   const key = stringify(args);
   await request(...args);
-  updatersByKey.get(key).forEach(forceUpdate => forceUpdate());
+  getUpdaters(key).forEach(updater => updater());
 }
