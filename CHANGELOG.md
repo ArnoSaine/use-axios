@@ -1,3 +1,8 @@
+# 0.2.1
+
+- Fix error when calling `reload` with unknown request parameters
+- Use recommended `forceUpdate`
+
 # 0.2.0
 
 - Update dependencies
