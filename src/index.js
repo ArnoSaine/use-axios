@@ -22,9 +22,8 @@ function request(...args) {
 
 export default function useAxios(...args) {
   const key = stringify(args);
-  const setState = useState()[1];
+  const [, forceUpdate] = useReducer(x => x + 1, 0);
   useEffect(() => {
-    const forceUpdate = () => setState({});
     if (!updatersByKey.has(key)) {
       updatersByKey.set(key, new Set());
     }
