@@ -6,12 +6,12 @@
   "scripts": {
     "build": "npm run inbuild --",
     "dev:example": "concurrently \"npm start\" \"npm link && cd example && npm link use-axios && npm start\"",
-    "eslint": "eslint {.,src/**}/*.{js,mjs} --fix",
+    "eslint": "eslint {.,src/**}/*.js --fix",
     "inbuild": "library-util babel --verbose",
     "lint": "npm run eslint && npm run prettier",
     "prebuild": "rimraf cjs es",
     "prepack": "npm run build",
-    "prettier": "npm run prettier:write -- {.,src/**}/*.{js,json,mjs} !./package-lock.json",
+    "prettier": "npm run prettier:write -- {.,src/**}/*.{js,json} !./package-lock.json",
     "prettier:write": "prettier --config .prettierrc.js --write",
     "preversion": "npm run lint",
     "start": "npm run inbuild -- --watch"
