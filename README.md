@@ -81,18 +81,14 @@ function App() {
 }
 ```
 
-To handle error inside a component, use `try...catch`:
+To handle error inside a component, use `useAxiosSafe`:
 
 ```js
+import { useAxiosSafe } from "use-axios";
+
 function User({ id }) {
-  try {
-    const { data } = useAxios(`/api/users/${id}`);
-    return <div>User: {data.first_name}</div>;
-  } catch (error) {
-    // If error is a promise, rethrow it for React Suspense
-    if (Promise.resolve(error) === error) {
-      throw error;
-    }
+  const [error, { data }] = useAxiosSafe(`/api/users/${id}`);
+  if (error) {
     return (
       <>
         <p>
@@ -106,6 +102,7 @@ function User({ id }) {
       </>
     );
   }
+  return <div>User: {data.first_name}</div>;
 }
 ```
 

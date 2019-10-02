@@ -55,3 +55,15 @@ export async function refetch(...args) {
   await request(...args);
   getUpdaters(key).forEach(updater => updater());
 }
+
+export function useAxiosSafe(...args) {
+  try {
+    return [null, useAxios(...args)];
+  } catch (error) {
+    // If error is a promise, rethrow it for React Suspense
+    if (Promise.resolve(error) === error) {
+      throw error;
+    }
+    return [error, {}];
+  }
+}
