@@ -1,3 +1,10 @@
+# 0.3.0
+
+- **Breaking change:** rename `reload` → `refetch`
+- Add `useAxiosSafe`
+- Add `axios` to `peerDependencies`
+- Update dependencies
+
 # 0.2.1
 
 - Fix error when calling `reload` with unknown request parameters
