@@ -113,15 +113,15 @@ function User({ id }) {
 
 Successful responses with the same (stable JSON stringified) arguments will be cached across the application. Components may rerender and call `useAxios` multiple times, and only one HTTP request is made, as long as there is some component mounted using the same arguments.
 
-To reload data and update components, call `reload(...args)`.
+To refetch data and update components, call `refetch(...args)`.
 
-### Reload example
+### Refetch example
 
 Remove user and update list of users:
 
 ```js
 import { Suspense } from "react";
-import useAxios, { reload } from "use-axios";
+import useAxios, { refetch } from "use-axios";
 import { delete as del } from "axios";
 
 function Users() {
@@ -143,7 +143,7 @@ function User({ id, first_name }) {
         onClick={async () => {
           // Remove user and update list of users
           await del(`/api/users/${id}`);
-          reload("/api/users");
+          refetch("/api/users");
         }}
       >
         ❌

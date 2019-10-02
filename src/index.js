@@ -50,7 +50,7 @@ export default function useAxios(...args) {
   throw requests.get(key);
 }
 
-export async function reload(...args) {
+export async function refetch(...args) {
   const key = stringify(args);
   await request(...args);
   getUpdaters(key).forEach(updater => updater());
