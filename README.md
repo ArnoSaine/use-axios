@@ -2,7 +2,7 @@
 
 Simple Axios hook for React. Use React Suspense to show loading indicator and Error Boundary to show request errors.
 
-> **Note** - This is a React hook for data fetching inside a function component body. Use `axios` for requests in `onSubmit`, `onClick` etc.\*\*
+> **Note** - This is a React hook for data fetching inside a function component body. Use `axios` for requests in `onSubmit`, `onClick` etc.
 
 ## Install
 
