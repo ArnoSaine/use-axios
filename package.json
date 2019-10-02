@@ -32,9 +32,9 @@
   },
   "devDependencies": {
     "axios": "^0.19.0",
-    "concurrently": "^4.1.1",
+    "concurrently": "^4.1.2",
     "library-util": "^0.5.0",
-    "react": "^16.8.6"
+    "react": "^16.10.1"
   },
   "module": "es",
   "files": [
@@ -58,7 +58,7 @@
     }
   },
   "dependencies": {
-    "@babel/runtime": "^7.5.5",
+    "@babel/runtime": "^7.6.2",
     "@postinumero/map-get-with-default": "^0.1.0",
     "fast-json-stable-stringify": "^2.0.0"
   }
