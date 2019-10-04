@@ -1,3 +1,8 @@
+# 0.3.2
+
+- Add `create` function to use custom axios instance
+- Bring back removed `reload` function with a deprecation warning
+
 # 0.3.1
 
 - Update readme
