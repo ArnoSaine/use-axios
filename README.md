@@ -33,7 +33,7 @@ import useAxios from "use-axios";
 function User({ id }) {
   const { data } = useAxios(`/api/users/${id}`);
 
-  return <div>User: {data.first_name}</div>;
+  return <div>First name: {data.first_name}</div>;
 }
 
 function App() {
@@ -104,7 +104,7 @@ function User({ id }) {
       </>
     );
   }
-  return <div>User: {data.first_name}</div>;
+  return <div>First name: {data.first_name}</div>;
 }
 ```
 
@@ -158,4 +158,26 @@ function App() {
     </Suspense>
   );
 }
+```
+
+## Using a custom axios instance `create([axios|config])`
+
+You can use a custom axios instance by calling `create`.
+
+#### Params
+
+An axios instance or an optional config object for `axios.create`.
+
+#### Returns
+
+An object with properties `useAxios`, `useAxiosSafe` and `refetch`.
+
+### Example
+
+```js
+import { create } from "use-axios";
+
+const { useAxios } = create({
+  baseURL: "https://api.example.com"
+});
 ```

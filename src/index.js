@@ -3,67 +3,78 @@ import axios from 'axios';
 import stringify from 'fast-json-stable-stringify';
 import get from '@postinumero/map-get-with-default';
 
-const responses = new Map();
-const requests = new Map();
-const updaters = new Map();
+export const create = config => {
+  const axiosInstance =
+    typeof config === 'function' ? config : axios.create(config);
 
-function request(...args) {
-  const key = stringify(args);
-  const suspender = new Promise(async resolve => {
-    try {
-      responses.set(key, [null, await axios(...args)]);
-    } catch (error) {
-      responses.set(key, [error]);
-    }
-    resolve();
-  });
-  requests.set(key, suspender);
-  return suspender;
-}
+  const responses = new Map();
+  const requests = new Map();
+  const updaters = new Map();
 
-const getUpdaters = key => updaters::get(key, () => new Set());
-
-export default function useAxios(...args) {
-  const key = stringify(args);
-  const [, forceUpdate] = useReducer(x => x + 1, 0);
-  useEffect(() => {
-    const updaters = getUpdaters(key);
-    updaters.add(forceUpdate);
-    return () => {
-      updaters.delete(forceUpdate);
-      if (!updaters.size) {
-        requests.delete(key);
-        responses.delete(key);
+  function request(...args) {
+    const key = stringify(args);
+    const suspender = new Promise(async resolve => {
+      try {
+        responses.set(key, [null, await axiosInstance(...args)]);
+      } catch (error) {
+        responses.set(key, [error]);
       }
-    };
-  }, [key]);
-  if (responses.has(key)) {
-    const [error, data] = responses.get(key);
-    if (error) {
-      throw error;
-    }
-    return data;
+      resolve();
+    });
+    requests.set(key, suspender);
+    return suspender;
   }
-  if (!requests.has(key)) {
-    request(...args);
-  }
-  throw requests.get(key);
-}
 
-export async function refetch(...args) {
-  const key = stringify(args);
-  await request(...args);
-  getUpdaters(key).forEach(updater => updater());
-}
+  const getUpdaters = key => updaters::get(key, () => new Set());
 
-export function useAxiosSafe(...args) {
-  try {
-    return [null, useAxios(...args)];
-  } catch (error) {
-    // If error is a promise, rethrow it for React Suspense
-    if (Promise.resolve(error) === error) {
-      throw error;
+  function useAxios(...args) {
+    const key = stringify(args);
+    const [, forceUpdate] = useReducer(x => x + 1, 0);
+    useEffect(() => {
+      const updaters = getUpdaters(key);
+      updaters.add(forceUpdate);
+      return () => {
+        updaters.delete(forceUpdate);
+        if (!updaters.size) {
+          requests.delete(key);
+          responses.delete(key);
+        }
+      };
+    }, [key]);
+    if (responses.has(key)) {
+      const [error, data] = responses.get(key);
+      if (error) {
+        throw error;
+      }
+      return data;
     }
-    return [error, {}];
+    if (!requests.has(key)) {
+      request(...args);
+    }
+    throw requests.get(key);
   }
-}
+
+  async function refetch(...args) {
+    const key = stringify(args);
+    await request(...args);
+    getUpdaters(key).forEach(updater => updater());
+  }
+
+  function useAxiosSafe(...args) {
+    try {
+      return [null, useAxios(...args)];
+    } catch (error) {
+      // If error is a promise, rethrow it for React Suspense
+      if (Promise.resolve(error) === error) {
+        throw error;
+      }
+      return [error, {}];
+    }
+  }
+
+  return { useAxios, refetch, useAxiosSafe };
+};
+
+const { useAxios, refetch, useAxiosSafe } = create(axios);
+
+export { useAxios as default, refetch, useAxiosSafe };
