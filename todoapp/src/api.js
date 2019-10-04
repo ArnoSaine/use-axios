@@ -7,27 +7,27 @@ export function useItems() {
 
 export async function deleteItems(items) {
   await Promise.all(items.map(({ _id }) => del(`/api/items/${_id}`)));
-  refetch('/api/items');
+  await refetch('/api/items');
 }
 
 export async function deleteItem(id) {
   await del(`/api/items/${id}`);
-  refetch('/api/items');
+  await refetch('/api/items');
 }
 
 export async function postItem(item) {
   await post('/api/items', item);
-  refetch('/api/items');
+  await refetch('/api/items');
 }
 
 export async function putItem(item) {
   await put('/api/items', item);
-  refetch('/api/items');
+  await refetch('/api/items');
 }
 
 export async function putItems(items) {
   await Promise.all(items.map(item => put('/api/items', item)));
-  refetch('/api/items');
+  await refetch('/api/items');
 }
 
 // Poll API 😕 to get updates from other users and tabs
