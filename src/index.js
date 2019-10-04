@@ -2,6 +2,7 @@ import { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import stringify from 'fast-json-stable-stringify';
 import get from '@postinumero/map-get-with-default';
+import obsoleteWithReplacement from './utils/obsoleteWithReplacement';
 
 export const create = config => {
   const axiosInstance =
@@ -78,3 +79,5 @@ export const create = config => {
 const { useAxios, refetch, useAxiosSafe } = create(axios);
 
 export { useAxios as default, refetch, useAxiosSafe };
+
+export const reload = obsoleteWithReplacement(refetch, 'reload');
