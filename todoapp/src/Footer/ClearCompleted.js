@@ -1,17 +1,13 @@
-import useAxios, { refetch } from 'use-axios';
-import { delete as del } from 'axios';
+import { useItems, deleteItems } from '../api';
 
 export default function ClearCompleted() {
-  const { data } = useAxios('/api/items');
-  const items = data.filter(({ completed }) => completed);
-  const { length } = items;
+  const items = useItems();
+  const completedItems = items.filter(({ completed }) => completed);
+  const { length } = completedItems;
   return length ? (
     <button
       className="clear-completed"
-      onClick={async () => {
-        await Promise.all(items.map(({ _id }) => del(`/api/items/${_id}`)));
-        refetch('/api/items');
-      }}
+      onClick={() => deleteItems(completedItems)}
       type="button"
     >
       Clear completed ({length})

@@ -1,16 +1,14 @@
-import { refetch } from 'use-axios';
-import { post } from 'axios';
+import { postItem } from './api';
 
 export default function Input() {
   return (
     <input
       autoFocus
       className="new-todo"
-      onKeyDown={({ keyCode, target }) => {
+      onKeyDown={async ({ keyCode, target }) => {
         const title = target.value.trim();
         if (keyCode === 13 && title) {
-          post('/api/items', { title, timestamp: Date.now() });
-          refetch('/api/items');
+          await postItem({ title, timestamp: Date.now() });
           target.value = '';
         }
       }}

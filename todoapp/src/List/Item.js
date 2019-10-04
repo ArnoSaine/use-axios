@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { put, delete as del } from 'axios';
-import { refetch } from 'use-axios';
+import { deleteItem, putItem } from '../api';
 
 export default function Item({ item, item: { completed = false, title } }) {
   const [focus, setFocus] = useState();
@@ -17,11 +16,10 @@ export default function Item({ item, item: { completed = false, title } }) {
 
   function handleSave() {
     setIsEditing(false);
-    put('/api/items', {
+    putItem({
       ...item,
       title: inputRef.current.value.trim()
     });
-    refetch('/api/items');
   }
 
   return (
@@ -36,22 +34,18 @@ export default function Item({ item, item: { completed = false, title } }) {
         <input
           className="toggle"
           checked={completed}
-          onChange={() => {
-            put('/api/items', {
+          onChange={() =>
+            putItem({
               ...item,
               completed: !completed
-            });
-            refetch('/api/items');
-          }}
+            })
+          }
           type="checkbox"
         />
         <label>{title}</label>
         <button
           className="destroy"
-          onClick={() => {
-            del(`/api/items/${item._id}`);
-            refetch('/api/items');
-          }}
+          onClick={() => deleteItem(item._id)}
           type="button"
         />
       </div>

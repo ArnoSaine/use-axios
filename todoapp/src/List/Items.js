@@ -1,4 +1,4 @@
-import useAxios from 'use-axios';
+import { useItems } from '../api';
 import Item from './Item';
 
 export default function Items({
@@ -6,15 +6,15 @@ export default function Items({
     params: { filter }
   }
 }) {
-  const { data } = useAxios('/api/items');
-  const items = filter
-    ? data.filter(
+  const items = useItems();
+  const listItems = filter
+    ? items.filter(
         ({ completed }) => Boolean(completed) === (filter === 'completed')
       )
-    : data;
+    : items;
   return (
     <ul className="todo-list">
-      {items.map(item => (
+      {listItems.map(item => (
         <Item key={item._id} item={item} />
       ))}
     </ul>

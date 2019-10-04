@@ -1,8 +1,7 @@
-import useAxios, { refetch } from 'use-axios';
-import { put } from 'axios';
+import { useItems, putItems } from './api';
 
 export default function ToggleAll() {
-  const items = useAxios('/api/items').data;
+  const items = useItems();
   return items.length
     ? (() => {
         const completed = items.every(({ completed }) => completed);
@@ -12,17 +11,11 @@ export default function ToggleAll() {
               id="toggle-all"
               className="toggle-all"
               checked={completed}
-              onChange={async () => {
-                await Promise.all(
-                  items.map(item =>
-                    put('/api/items', {
-                      ...item,
-                      completed: !completed
-                    })
-                  )
-                );
-                refetch('/api/items');
-              }}
+              onChange={() =>
+                putItems(
+                  items.map(item => ({ ...item, completed: !completed }))
+                )
+              }
               type="checkbox"
             />
             <label htmlFor="toggle-all" />

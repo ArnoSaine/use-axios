@@ -1,6 +1,5 @@
-import { Suspense, useEffect } from 'react';
+import { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { refetch } from 'use-axios';
 import Container from './Container';
 import Footer from './Footer';
 import Input from './Input';
@@ -11,12 +10,6 @@ import { homepage } from '../package.json';
 const basename = process.env.NODE_ENV === 'development' ? undefined : homepage;
 
 export default function App() {
-  // Poll API to get updates from other users and tabs 😕
-  useEffect(() => {
-    const interval = setInterval(() => refetch('/api/items'), 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <Suspense fallback="loading...">
       <Container>
