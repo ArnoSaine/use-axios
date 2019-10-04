@@ -57,8 +57,11 @@ export const create = config => {
 
   async function refetch(...args) {
     const key = stringify(args);
-    await request(...args);
-    getUpdaters(key).forEach(updater => updater());
+    const updaters = getUpdaters(key);
+    if (updaters.size) {
+      await request(...args);
+      updaters.forEach(updater => updater());
+    }
   }
 
   function useAxiosSafe(...args) {

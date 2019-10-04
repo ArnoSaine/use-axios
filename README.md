@@ -10,7 +10,7 @@ Simple Axios hook for React. Use React Suspense to show loading indicator and Er
 npm install axios use-axios
 ```
 
-## `useAxios`
+## `useAxios(config)`
 
 #### Params
 
@@ -108,13 +108,19 @@ function User({ id }) {
 }
 ```
 
-## Caching
+## Caching and refetching
 
 Successful responses with the same (stable JSON stringified) arguments will be cached across the application. Components may rerender and call `useAxios` multiple times, and only one HTTP request is made, as long as there is some component mounted using the same arguments.
 
-To refetch data and update components, call `refetch(...args)`.
+### `refetch(config)`
 
-### Refetch example
+Refetch data and update components. Does nothing, if there are no components currently mounted using `useAxios` and same (stable JSON stringified) arguments.
+
+#### Params
+
+Same as `axios`.
+
+#### Refetch example
 
 Remove user and update list of users:
 
@@ -160,9 +166,11 @@ function App() {
 }
 ```
 
-## Using a custom axios instance `create([axios|config])`
+## Using a custom axios instance
 
 You can use a custom axios instance by calling `create`.
+
+### `create([axios|config])`
 
 #### Params
 
@@ -172,7 +180,7 @@ An axios instance or an optional config object for `axios.create`.
 
 An object with properties `useAxios`, `useAxiosSafe` and `refetch`.
 
-### Example
+#### Custom axios instance example
 
 ```js
 import { create } from "use-axios";
