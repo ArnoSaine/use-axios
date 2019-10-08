@@ -9,6 +9,7 @@
     "eslint": "eslint {.,src/**}/*.js --fix",
     "inbuild": "library-util babel --verbose",
     "lint": "npm run eslint && npm run prettier",
+    "postpublish": "cd todoapp && npm install use-axios@latest",
     "prebuild": "rimraf cjs es",
     "prepack": "npm run build",
     "prettier": "npm run prettier:write -- {.,src/**}/*.{js,json} !./package-lock.json",
@@ -32,9 +33,9 @@
   },
   "devDependencies": {
     "axios": "^0.19.0",
-    "concurrently": "^4.1.2",
+    "concurrently": "^5.0.0",
     "library-util": "^0.5.0",
-    "react": "^16.10.1"
+    "react": "^16.10.2"
   },
   "module": "es",
   "files": [
@@ -54,7 +55,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit_": "lint-staged"
     }
   },
   "dependencies": {
