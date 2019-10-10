@@ -1,3 +1,7 @@
+# 0.3.3
+
+- Optimize refetch
+
 # 0.3.2
 
 - Add `create` function to use custom axios instance
