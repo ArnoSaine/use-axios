@@ -1,3 +1,7 @@
+# 0.3.4
+
+- Update readme
+
 # 0.3.3
 
 - Optimize refetch
