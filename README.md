@@ -2,7 +2,7 @@
 
 Simple Axios hook for React. Use React Suspense to show loading indicator and Error Boundary to show request errors.
 
-> ⚠️ Please note that as of yet (2019-10) unstable parts of the React API were used to create this library. You might need to update your version of `use-axios` if the API is changed in a future version of React. 
+> ⚠️ Please note that as of yet (2019-10) unstable parts of the React API were used to create this library. You might need to update your version of `use-axios` if the API is changed in a future version of React.
 
 > **Note** - This is a React hook for data fetching inside a function component body. Use `axios` for requests in `onSubmit`, `onClick` etc.
 
@@ -12,7 +12,7 @@ Simple Axios hook for React. Use React Suspense to show loading indicator and Er
 npm install axios use-axios
 ```
 
-## `useAxios(config)`
+## `useAxios(url[, config])`
 
 #### Params
 
@@ -114,7 +114,7 @@ function User({ id }) {
 
 Successful responses with the same (stable JSON stringified) arguments will be cached across the application. Components may rerender and call `useAxios` multiple times, and only one HTTP request is made, as long as there is some component mounted using the same arguments.
 
-### `refetch(config)`
+### `refetch(url[, config])`
 
 Refetch data and update components. Does nothing, if there are no components currently mounted using `useAxios` and same (stable JSON stringified) arguments.
 
