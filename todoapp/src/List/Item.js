@@ -15,11 +15,13 @@ export default function Item({ item, item: { completed = false, title } }) {
   }, [focus, setFocus]);
 
   function handleSave() {
-    setIsEditing(false);
-    putItem({
-      ...item,
-      title: inputRef.current.value.trim()
-    });
+    if (isEditing) {
+      setIsEditing(false);
+      putItem({
+        ...item,
+        title: inputRef.current.value.trim()
+      });
+    }
   }
 
   return (
