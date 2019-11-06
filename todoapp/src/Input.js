@@ -5,9 +5,9 @@ export default function Input() {
     <input
       autoFocus
       className="new-todo"
-      onKeyDown={async ({ keyCode, target }) => {
+      onKeyDown={async ({ key, target }) => {
         const title = target.value.trim();
-        if (keyCode === 13 && title) {
+        if (key === 'Enter' && title) {
           await postItem({ title, timestamp: Date.now() });
           target.value = '';
         }
