@@ -8,7 +8,6 @@ export default function ClearCompleted() {
     <button
       className="clear-completed"
       onClick={() => deleteItems(completedItems)}
-      type="button"
     >
       Clear completed ({length})
     </button>
