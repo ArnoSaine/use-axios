@@ -61,7 +61,9 @@
   "dependencies": {
     "@babel/runtime": "^7.6.2",
     "@postinumero/map-get-with-default": "^0.1.0",
-    "fast-json-stable-stringify": "^2.0.0"
+    "fast-json-stable-stringify": "^2.0.0",
+    "memoizee": "^0.4.14",
+    "use-force-update": "^1.0.7"
   },
   "peerDependencies": {
     "axios": "^0.19.0"
