@@ -39,6 +39,7 @@ export const create = config => {
         if (!updatersSet.size) {
           requestsMap.delete(key);
           responsesMap.delete(key);
+          updatersMap.delete(key);
         }
       };
     }, [key]);
