@@ -1,7 +1,9 @@
-# Unreleased changes
+# 0.3.5
 
 - Add named export `useAxios` (same as the default export)
 - Update dependencies
+- Minor internal changes
+- Update readme
 
 # 0.3.4
 
