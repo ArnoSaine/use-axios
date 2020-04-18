@@ -1,5 +1,6 @@
 # Unreleased changes
 
+- Add named export `useAxios` (same as the default export)
 - Update dependencies
 
 # 0.3.4

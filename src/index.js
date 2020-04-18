@@ -81,6 +81,6 @@ export const create = config => {
 
 const { useAxios, refetch, useAxiosSafe } = create(axios);
 
-export { useAxios as default, refetch, useAxiosSafe };
+export { useAxios as default, useAxios, refetch, useAxiosSafe };
 
 export const reload = obsoleteWithReplacement(refetch, 'reload');
