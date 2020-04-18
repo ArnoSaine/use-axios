@@ -32,10 +32,10 @@
     "email": "arno@mowhi.com"
   },
   "devDependencies": {
-    "axios": "^0.19.0",
-    "concurrently": "^5.0.0",
+    "axios": "^0.19.2",
+    "concurrently": "^5.1.0",
     "library-util": "^0.5.0",
-    "react": "^16.10.2"
+    "react": "^16.13.1"
   },
   "module": "es",
   "files": [
@@ -59,9 +59,9 @@
     }
   },
   "dependencies": {
-    "@babel/runtime": "^7.6.2",
+    "@babel/runtime": "^7.9.2",
     "@postinumero/map-get-with-default": "^0.1.0",
-    "fast-json-stable-stringify": "^2.0.0"
+    "fast-json-stable-stringify": "^2.1.0"
   },
   "peerDependencies": {
     "axios": "^0.19.0"

@@ -1,3 +1,7 @@
+# Unreleased changes
+
+- Update dependencies
+
 # 0.3.4
 
 - Update readme

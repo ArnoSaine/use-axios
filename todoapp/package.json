@@ -3,20 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@arnosaine/react-scripts": "^3.2.0",
-    "clsx": "^1.0.4",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "@arnosaine/cra-template-helpers": "^0.2.0",
+    "@arnosaine/react-scripts": "^3.4.1",
+    "clsx": "^1.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "todomvc-app-css": "^2.3.0",
     "todomvc-common": "^1.0.5",
-    "use-axios": "^0.3.3"
+    "use-axios": "^0.3.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app",
+    "rules": {
+      "react/react-in-jsx-scope": "off"
+    }
   },
   "browserslist": {
     "production": [
