@@ -8,51 +8,51 @@ export const create = config => {
   const axiosInstance =
     typeof config === 'function' ? config : axios.create(config);
 
-  const responses = new Map();
-  const requests = new Map();
-  const updaters = new Map();
+  const responsesMap = new Map();
+  const requestsMap = new Map();
+  const updatersMap = new Map();
 
   function request(...args) {
     const key = stringify(args);
     const suspender = new Promise(async resolve => {
       try {
-        responses.set(key, [null, await axiosInstance(...args)]);
+        responsesMap.set(key, [null, await axiosInstance(...args)]);
       } catch (error) {
-        responses.set(key, [error]);
+        responsesMap.set(key, [error]);
       }
       resolve();
     });
-    requests.set(key, suspender);
+    requestsMap.set(key, suspender);
     return suspender;
   }
 
-  const getUpdaters = key => updaters::get(key, () => new Set());
+  const getUpdaters = key => updatersMap::get(key, () => new Set());
 
   function useAxios(...args) {
     const key = stringify(args);
     const [, forceUpdate] = useReducer(x => x + 1, 0);
     useEffect(() => {
-      const updaters = getUpdaters(key);
-      updaters.add(forceUpdate);
+      const updatersSet = getUpdaters(key);
+      updatersSet.add(forceUpdate);
       return () => {
-        updaters.delete(forceUpdate);
-        if (!updaters.size) {
-          requests.delete(key);
-          responses.delete(key);
+        updatersSet.delete(forceUpdate);
+        if (!updatersSet.size) {
+          requestsMap.delete(key);
+          responsesMap.delete(key);
         }
       };
     }, [key]);
-    if (responses.has(key)) {
-      const [error, data] = responses.get(key);
+    if (responsesMap.has(key)) {
+      const [error, data] = responsesMap.get(key);
       if (error) {
         throw error;
       }
       return data;
     }
-    if (!requests.has(key)) {
+    if (!requestsMap.has(key)) {
       request(...args);
     }
-    throw requests.get(key);
+    throw requestsMap.get(key);
   }
 
   async function refetch(...args) {
