@@ -18,7 +18,7 @@ module.exports = function(app) {
     items[items.findIndex(({ _id }) => _id === req.body._id)] = req.body;
     res.sendStatus(204);
   });
-  api.del('/items/:id', function(req, res) {
+  api.delete('/items/:id', function(req, res) {
     items.splice(
       items.findIndex(({ _id }) => _id === Number(req.params.id)),
       1
