@@ -1,4 +1,4 @@
-import { useItems, putItems } from './api';
+import { useItems, putItems } from 'api';
 
 export default function ToggleAll() {
   const items = useItems();
@@ -13,7 +13,7 @@ export default function ToggleAll() {
               checked={completed}
               onChange={() =>
                 putItems(
-                  items.map(item => ({ ...item, completed: !completed }))
+                  items.map((item) => ({ ...item, completed: !completed }))
                 )
               }
               type="checkbox"

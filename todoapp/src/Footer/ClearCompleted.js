@@ -1,4 +1,4 @@
-import { useItems, deleteItems } from '../api';
+import { useItems, deleteItems } from 'api';
 
 export default function ClearCompleted() {
   const items = useItems();

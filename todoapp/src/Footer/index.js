@@ -1,4 +1,4 @@
-import { useItems } from '../api';
+import { useItems } from 'api';
 import ClearCompleted from './ClearCompleted';
 import Counter from './Counter';
 import Filter from './Filter';

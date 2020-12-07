@@ -1,4 +1,4 @@
-import { postItem } from './api';
+import { postItem } from 'api';
 
 export default function Input() {
   return (

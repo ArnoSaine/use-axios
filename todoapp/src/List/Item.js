@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import { deleteItem, putItem } from '../api';
+import { deleteItem, putItem } from 'api';
 
 export default function Item({ item, item: { completed = false, title } }) {
   const [focus, setFocus] = useState();
@@ -19,7 +19,7 @@ export default function Item({ item, item: { completed = false, title } }) {
       setIsEditing(false);
       putItem({
         ...item,
-        title: inputRef.current.value.trim()
+        title: inputRef.current.value.trim(),
       });
     }
   }
@@ -39,7 +39,7 @@ export default function Item({ item, item: { completed = false, title } }) {
           onChange={() =>
             putItem({
               ...item,
-              completed: !completed
+              completed: !completed,
             })
           }
           type="checkbox"

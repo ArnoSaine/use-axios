@@ -5,7 +5,7 @@
   "main": "cjs",
   "scripts": {
     "build": "npm run inbuild --",
-    "dev:todoapp": "concurrently \"npm start\" \"npm link && cd todoapp && npm link use-axios && npm start\"",
+    "dev:todoapp": "concurrently \"npm start\" \"cd todoapp && npm link ../ && npm start\"",
     "eslint": "eslint {.,src/**}/*.js --fix",
     "inbuild": "library-util babel --verbose",
     "lint": "npm run eslint && npm run prettier",

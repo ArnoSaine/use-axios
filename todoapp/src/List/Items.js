@@ -1,10 +1,10 @@
-import { useItems } from '../api';
+import { useItems } from 'api';
 import Item from './Item';
 
 export default function Items({
   match: {
-    params: { filter }
-  }
+    params: { filter },
+  },
 }) {
   const items = useItems();
   const listItems = filter
@@ -14,7 +14,7 @@ export default function Items({
     : items;
   return (
     <ul className="todo-list">
-      {listItems.map(item => (
+      {listItems.map((item) => (
         <Item key={item._id} item={item} />
       ))}
     </ul>

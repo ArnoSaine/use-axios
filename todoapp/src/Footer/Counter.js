@@ -1,4 +1,4 @@
-import { useItems } from '../api';
+import { useItems } from 'api';
 
 export default function Counter() {
   const items = useItems();

@@ -26,7 +26,7 @@ export async function putItem(item) {
 }
 
 export async function putItems(items) {
-  await Promise.all(items.map(item => put('/api/items', item)));
+  await Promise.all(items.map((item) => put('/api/items', item)));
   await refetch('/api/items');
 }
 

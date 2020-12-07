@@ -6,7 +6,7 @@ export default function Filter() {
       {[
         { path: '', title: 'All' },
         { path: 'active', title: 'Active' },
-        { path: 'completed', title: 'Completed' }
+        { path: 'completed', title: 'Completed' },
       ].map(({ path, title }) => (
         <li key={path}>
           <NavLink activeClassName="selected" exact replace to={`/${path}`}>

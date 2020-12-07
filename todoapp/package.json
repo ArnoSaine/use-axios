@@ -2,28 +2,12 @@
   "name": "use-axios-todoapp",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@arnosaine/cra-template-helpers": "^0.2.0",
-    "@arnosaine/react-scripts": "^3.4.1",
-    "clsx": "^1.1.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "todomvc-app-css": "^2.3.0",
-    "todomvc-common": "^1.0.5",
-    "use-axios": "^0.3.5"
-  },
+  "type": "module",
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "rules": {
-      "react/react-in-jsx-scope": "off"
-    }
+    "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [
@@ -37,5 +21,24 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "/use-axios"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "dependencies": {
+    "@arnosaine/react-scripts": "4.0.0-4",
+    "@postinumero/babel-preset-experimental": "^0.1.2",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.2.2",
+    "clsx": "^1.1.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "todomvc-app-css": "^2.3.0",
+    "todomvc-common": "^1.0.5",
+    "use-axios": "^0.3.5"
+  }
 }
