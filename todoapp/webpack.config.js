@@ -1,6 +1,4 @@
-import path from 'path';
-
-export default env => config => {
-  config.resolve.alias.react = path.resolve('./node_modules/react');
+export default _env => config => {
+  config.resolve.alias.react = require.resolve('react');
   return config;
 };

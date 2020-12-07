@@ -1,4 +1,4 @@
-import useAxios, { refetch } from 'use-axios';
+import { useAxios, refetch } from 'use-axios';
 import { delete as del, post, put } from 'axios';
 
 export function useItems() {
