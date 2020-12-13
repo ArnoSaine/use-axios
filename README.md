@@ -4,7 +4,7 @@ Simple Axios hook for React. Use React Suspense to show loading indicator and Er
 
 > ⚠️ Please note that as of yet (2019-10) unstable parts of the React API were used to create this library. You might need to update your version of `use-axios` if the API is changed in a future version of React.
 
-> ⚠️ Excessive use leads to render “waterfalls”. Please consider whether or not [suspense for data fetching](https://reactjs.org/docs/concurrent-mode-suspense.html) is the right approach for your application.
+> ⚠️ Excessive use leads to render “waterfalls”. Please consider whether or not [suspense for data fetching](https://reactjs.org/docs/concurrent-mode-suspense.html) is the right approach for your application. If not, there's also an [`isLoading`](#not-ready-for-suspense) style API.
 
 > ℹ This is a React hook for data fetching inside a function component body. Use regular `axios` for requests in `onSubmit`, `onClick` etc.
 
@@ -31,8 +31,8 @@ Response error from axios or promise for React Suspense.
 ## Example
 
 ```js
-import { Suspense } from "react";
-import useAxios from "use-axios";
+import { Suspense } from 'react';
+import useAxios from 'use-axios';
 
 function User({ id }) {
   const { data } = useAxios(`/api/users/${id}`);
@@ -54,7 +54,7 @@ function App() {
 Create, read, update and delete example that updates components on changes. For details, see [TodoMVC example](https://github.com/ArnoSaine/use-axios/tree/master/todoapp).
 
 ```js
-import { postItem, useItems, putItem, deleteItem } from "./api";
+import { postItem, useItems, putItem, deleteItem } from './api';
 
 // Create
 postItem({ hi: 123 });
@@ -63,39 +63,39 @@ postItem({ hi: 123 });
 const items = useItems(); // [{ _id: "0", hi: 123 }] (assuming backend generates the id)
 
 // Update
-putItem({ _id: "0", hi: 456 });
+putItem({ _id: '0', hi: 456 });
 
 // Delete
-deleteItem("0");
+deleteItem('0');
 ```
 
 `api.js`:
 
 ```js
-import { useAxios, refetch } from "use-axios";
-import { delete as del, post, put } from "axios";
+import { useAxios, refetch } from 'use-axios';
+import { delete as del, post, put } from 'axios';
 
 export async function postItem(item) {
-  await post("/api/items", item);
-  await refetch("/api/items");
+  await post('/api/items', item);
+  await refetch('/api/items');
 }
 
 export function useItems() {
-  return useAxios("/api/items").data;
+  return useAxios('/api/items').data;
 }
 
 export async function putItem(item) {
-  await put("/api/items", item);
-  await refetch("/api/items");
+  await put('/api/items', item);
+  await refetch('/api/items');
 }
 
 export async function deleteItem(id) {
   await del(`/api/items/${id}`);
-  await refetch("/api/items");
+  await refetch('/api/items');
 }
 
 // Poll API 😕 to get updates from other users and tabs
-setInterval(() => refetch("/api/items"), 5000);
+setInterval(() => refetch('/api/items'), 5000);
 ```
 
 ## Handle errors
@@ -103,8 +103,8 @@ setInterval(() => refetch("/api/items"), 5000);
 Create an error boundary, for example using [react-error-boundary](https://github.com/bvaughn/react-error-boundary).
 
 ```js
-import { Suspense } from "react";
-import ErrorBoundary from "react-error-boundary";
+import { Suspense } from 'react';
+import ErrorBoundary from 'react-error-boundary';
 
 function MyFallbackComponent({ error, componentStack }) {
   return (
@@ -114,9 +114,9 @@ function MyFallbackComponent({ error, componentStack }) {
       </p>
       <pre>
         status: {error.response.status}
-        {"\n"}
+        {'\n'}
         statusText: {error.response.statusText}
-        {"\n"}
+        {'\n'}
         Stacktrace:
         {componentStack}
       </pre>
@@ -138,7 +138,7 @@ function App() {
 To handle error inside a component, use `useAxiosSafe`:
 
 ```js
-import { useAxiosSafe } from "use-axios";
+import { useAxiosSafe } from 'use-axios';
 
 function User({ id }) {
   const [error, { data }] = useAxiosSafe(`/api/users/${id}`);
@@ -150,7 +150,7 @@ function User({ id }) {
         </p>
         <pre>
           status: {error.response.status}
-          {"\n"}
+          {'\n'}
           statusText: {error.response.statusText}
         </pre>
       </>
@@ -177,12 +177,12 @@ Same as `axios`.
 Remove user and update list of users:
 
 ```js
-import { Suspense } from "react";
-import { useAxios, refetch } from "use-axios";
-import { delete as del } from "axios";
+import { Suspense } from 'react';
+import { useAxios, refetch } from 'use-axios';
+import { delete as del } from 'axios';
 
 function Users() {
-  const { data } = useAxios("/api/users");
+  const { data } = useAxios('/api/users');
   return (
     <ul>
       {data.map((user) => (
@@ -200,7 +200,7 @@ function User({ id, first_name }) {
         onClick={async () => {
           // Remove user and update list of users
           await del(`/api/users/${id}`);
-          refetch("/api/users");
+          refetch('/api/users');
         }}
       >
         ❌
@@ -235,9 +235,27 @@ An object with properties `useAxios`, `useAxiosSafe` and `refetch`.
 #### Custom axios instance example
 
 ```js
-import { create } from "use-axios";
+import { create } from 'use-axios';
 
 const { useAxios } = create({
-  baseURL: "https://api.example.com",
+  baseURL: 'https://api.example.com',
 });
+```
+
+## Not ready for Suspense?
+
+Import from `use-axios/loading-state` to use the `{isLoading, data, error}` style API. Example:
+
+```js
+import { useAxiosSafe } from 'use-axios/loading-state';
+
+function User({ id }) {
+  const { isLoading, data, error } = useAxiosSafe(`/api/users/${id}`);
+
+  if (isLoading) {
+    return 'Loading...';
+  }
+
+  return <div>First name: {data.data.first_name}</div>;
+}
 ```

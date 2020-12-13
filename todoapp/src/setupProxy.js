@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
-export default function (app) {
+export default function setupProxy(app) {
   const items = [];
   let id = 0;
   const api = express();
