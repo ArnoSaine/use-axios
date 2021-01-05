@@ -32,7 +32,7 @@
     "email": "arno@mowhi.com"
   },
   "devDependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "concurrently": "^5.1.0",
     "library-util": "^0.5.0",
     "react": "^16.13.1"
