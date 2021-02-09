@@ -10,7 +10,7 @@ export default function obsoleteWithReplacement(
         `WARNING! Obsolete function called. Function '${oldFnName}' has been deprecated and will be removed in the next major release. Please use the new '${replacementFunction.name}' function instead.`
       );
     }
-    this::replacementFunction(...args);
+    return this::replacementFunction(...args);
   }
   wrapper.prototype = replacementFunction.prototype;
 
