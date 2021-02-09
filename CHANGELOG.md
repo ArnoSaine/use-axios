@@ -1,3 +1,9 @@
+# 0.3.6
+
+- Use @postinumero/use-async for handling suspense
+- Update dependencies
+- Remove axios from peer dependencies (axios still needs to be installed manually)
+
 # 0.3.5
 
 - Add named export `useAxios` (same as the default export)
