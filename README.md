@@ -244,7 +244,7 @@ const { useAxios } = create({
 
 ## Not ready for Suspense?
 
-Import from `use-axios/loading-state` to use the `{isLoading, data, error}` style API. Example:
+Import from `use-axios/loading-state` to use the `{ isLoading, data, error }` style API. Example:
 
 ```js
 import { useAxiosSafe } from 'use-axios/loading-state';
