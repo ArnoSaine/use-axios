@@ -4,10 +4,10 @@ export default function obsoleteWithReplacement(
 ) {
   let warned;
   function wrapper(...args) {
-    if (!warned && console && console.warn) {
+    if (!warned) {
       warned = true;
-      console.warn(
-        `WARNING! Obsolete function called. Function '${oldFnName}' has been deprecated and will be removed in the next major release, please use the new '${replacementFunction.name}' function instead!`
+      console?.warn?.(
+        `WARNING! Obsolete function called. Function '${oldFnName}' has been deprecated and will be removed in the next major release. Please use the new '${replacementFunction.name}' function instead.`
       );
     }
     this::replacementFunction(...args);
