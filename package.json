@@ -1,6 +1,6 @@
 {
   "name": "use-axios",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Simple Axios hook for React. Use React Suspense to show loading indicator and Error Boundary to show request errors.",
   "keywords": [
     "react",
