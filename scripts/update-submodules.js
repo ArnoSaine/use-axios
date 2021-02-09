@@ -11,8 +11,8 @@ const isScoped = process.env.npm_package_name.startsWith('@');
         isScoped ? '-' : '/'
       }${target}`,
       version: process.env.npm_package_version,
-      main: '../cjs/loading-state/main.js',
-      module: '../mjs/loading-state/main.js',
+      main: `../cjs/${target}/main.js`,
+      module: `../mjs/${target}/main.js`,
     },
     { spaces: 2 }
   );
