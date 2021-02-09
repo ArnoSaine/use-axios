@@ -40,6 +40,6 @@
     "react-router-dom": "^5.2.0",
     "todomvc-app-css": "^2.3.0",
     "todomvc-common": "^1.0.5",
-    "use-axios": "^0.3.5"
+    "use-axios": "^0.3.6"
   }
 }
