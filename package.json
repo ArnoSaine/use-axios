@@ -30,11 +30,11 @@
   ],
   "scripts": {
     "build": "npm-run-all build:*",
+    "postbuild": "npm run update-submodules",
     "build:cjs": "library-scripts build --type cjs --out-dir cjs",
     "build:mjs": "library-scripts build --type mjs --out-dir mjs",
     "dev:todoapp": "concurrently \"watch:mjs\" \"cd todoapp && npm link ../ && npm start\"",
     "prepare": "npm run build",
-    "postbuild": "npm run update-submodules",
     "postpublish": "cd todoapp && npm install use-axios@latest",
     "update-submodules": "node scripts/update-submodules",
     "watch": "concurrently \"npm:watch:*\"",
