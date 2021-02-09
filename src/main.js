@@ -17,4 +17,8 @@ const { useAxios, refetch, useAxiosSafe } = create(axios);
 
 export { useAxios as default, useAxios, refetch, useAxiosSafe };
 
-export const reload = obsoleteWithReplacement(refetch, 'reload');
+export const reload = obsoleteWithReplacement(
+  refetch,
+  '`reload` function',
+  '`refetch` function'
+);
