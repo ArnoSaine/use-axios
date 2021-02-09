@@ -1,3 +1,8 @@
+# 0.3.7
+
+- Fix `create` function. Return an object with named functions instead of an array.
+- Fix deprecated `reload` function. Return value.
+
 # 0.3.6
 
 - Use @postinumero/use-async for handling suspense
