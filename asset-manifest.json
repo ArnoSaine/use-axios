@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/use-axios/static/css/main.e1b2a040.chunk.css",
+    "main.js": "/use-axios/static/js/main.eecb6074.chunk.js",
+    "main.js.map": "/use-axios/static/js/main.eecb6074.chunk.js.map",
+    "runtime-main.js": "/use-axios/static/js/runtime-main.28342b63.js",
+    "runtime-main.js.map": "/use-axios/static/js/runtime-main.28342b63.js.map",
+    "static/js/2.b4575e74.chunk.js": "/use-axios/static/js/2.b4575e74.chunk.js",
+    "static/js/2.b4575e74.chunk.js.map": "/use-axios/static/js/2.b4575e74.chunk.js.map",
+    "static/css/3.dbe2c8eb.chunk.css": "/use-axios/static/css/3.dbe2c8eb.chunk.css",
+    "static/js/3.93b86a9b.chunk.js": "/use-axios/static/js/3.93b86a9b.chunk.js",
+    "static/js/3.93b86a9b.chunk.js.map": "/use-axios/static/js/3.93b86a9b.chunk.js.map",
+    "static/js/4.ba34deb3.chunk.js": "/use-axios/static/js/4.ba34deb3.chunk.js",
+    "static/js/4.ba34deb3.chunk.js.map": "/use-axios/static/js/4.ba34deb3.chunk.js.map",
+    "index.html": "/use-axios/index.html",
+    "static/css/3.dbe2c8eb.chunk.css.map": "/use-axios/static/css/3.dbe2c8eb.chunk.css.map",
+    "static/css/main.e1b2a040.chunk.css.map": "/use-axios/static/css/main.e1b2a040.chunk.css.map",
+    "static/js/2.b4575e74.chunk.js.LICENSE.txt": "/use-axios/static/js/2.b4575e74.chunk.js.LICENSE.txt",
+    "static/js/3.93b86a9b.chunk.js.LICENSE.txt": "/use-axios/static/js/3.93b86a9b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.28342b63.js",
+    "static/css/3.dbe2c8eb.chunk.css",
+    "static/js/3.93b86a9b.chunk.js",
+    "static/css/main.e1b2a040.chunk.css",
+    "static/js/main.eecb6074.chunk.js"
+  ]
+}
