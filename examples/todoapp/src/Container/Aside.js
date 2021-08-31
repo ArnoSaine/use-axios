@@ -4,7 +4,7 @@ export default function Aside() {
       <header>
         <h3>use-axios</h3>
         <h5>Example</h5>
-        <a href="https://github.com/ArnoSaine/use-axios/tree/main/todoapp">
+        <a href="https://github.com/ArnoSaine/use-axios/tree/main/examples/todoapp">
           Source
         </a>
       </header>
