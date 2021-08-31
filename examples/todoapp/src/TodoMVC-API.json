@@ -1,0 +1,161 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "TodoMVC"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1"
+    }
+  ],
+  "paths": {
+    "/items": {
+      "get": {
+        "summary": "List all items",
+        "operationId": "getItems",
+        "responses": {
+          "200": {
+            "description": "An array of items",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Items"
+                },
+                "examples": {
+                  "example-1": {
+                    "value": []
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create an item",
+        "operationId": "postItem",
+        "responses": {
+          "201": {
+            "description": "Null response"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a list of items",
+        "operationId": "putItems",
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a list of items",
+        "operationId": "deleteItems",
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        }
+      }
+    },
+    "/items/{itemId}": {
+      "get": {
+        "summary": "Get an item by id",
+        "operationId": "getItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the item",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An item",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update an item",
+        "operationId": "putItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the item",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an item",
+        "operationId": "deleteItem",
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the item",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Items": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Item"
+        }
+      }
+    }
+  }
+}

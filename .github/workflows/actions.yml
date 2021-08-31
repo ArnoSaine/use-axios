@@ -1,0 +1,124 @@
+name: Test, deploy pages, publish packages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  install_build_test:
+    name: Clean install dependencies, build, test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+      - run: npm run build
+      # - run: npm test
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: |
+            .
+            !**/node_modules
+            !**/src
+          retention-days: 0.05
+
+  create_deployment:
+    needs: install_build_test
+    name: Create deploy artifact
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: .
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: public
+          path: .
+          retention-days: 0.05
+
+  add_deployment:
+    needs: create_deployment
+    name: Add files to /public
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - from: examples/todoapp/build
+            to: .
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: public
+          path: .
+
+      - run: mkdir -p public/${{ matrix.path.to }}
+      - run: mv ${{ matrix.path.from }}/* public/${{ matrix.path.to }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: public
+          path: .
+          retention-days: 0.05
+
+  deploy:
+    needs: add_deployment
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: public
+          path: .
+
+      - uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: public
+
+  publish:
+    needs: install_build_test
+    name: Publish to npm if version change
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: .
+
+      - name: Check package version changes
+        uses: EndBug/version-check@v1
+        id: check
+        with:
+          diff-search: true
+
+      - name: Set up Node.js
+        if: steps.check.outputs.changed == 'true'
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+
+      - name: Publish
+        if: steps.check.outputs.changed == 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish

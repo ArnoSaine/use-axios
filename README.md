@@ -1,10 +1,8 @@
 # use-axios
 
-Simple Axios hook for React. Use React Suspense to show loading indicator and Error Boundary to show request errors.
+Simple Axios hook for React. Use React Suspense to show loading indicator and Error Boundary to handle request errors.
 
-> ⚠️ Please note that as of yet (2019-10) unstable parts of the React API were used to create this library. You might need to update your version of `use-axios` if the API is changed in a future version of React.
-
-> ⚠️ Excessive use leads to render “waterfalls”. Please consider whether or not [suspense for data fetching](https://reactjs.org/docs/concurrent-mode-suspense.html) is the right approach for your application. If not, there's also an [`isLoading`](#not-ready-for-suspense) style API.
+[TodoMVC example](https://arnosaine.github.io/use-axios/)
 
 > ℹ This is a React hook for data fetching inside a function component body. Use regular `axios` for requests in `onSubmit`, `onClick` etc.
 
@@ -47,55 +45,6 @@ function App() {
     </Suspense>
   );
 }
-```
-
-### CRUD Example
-
-Create, read, update and delete example that updates components on changes. For details, see [TodoMVC example](https://github.com/ArnoSaine/use-axios/tree/master/todoapp).
-
-```js
-import { postItem, useItems, putItem, deleteItem } from './api';
-
-// Create
-postItem({ hi: 123 });
-
-// Read (value updates on changes)
-const items = useItems(); // [{ _id: "0", hi: 123 }] (assuming backend generates the id)
-
-// Update
-putItem({ _id: '0', hi: 456 });
-
-// Delete
-deleteItem('0');
-```
-
-`api.js`:
-
-```js
-import { useAxios, refetch } from 'use-axios';
-import { delete as del, post, put } from 'axios';
-
-export async function postItem(item) {
-  await post('/api/items', item);
-  await refetch('/api/items');
-}
-
-export function useItems() {
-  return useAxios('/api/items').data;
-}
-
-export async function putItem(item) {
-  await put('/api/items', item);
-  await refetch('/api/items');
-}
-
-export async function deleteItem(id) {
-  await del(`/api/items/${id}`);
-  await refetch('/api/items');
-}
-
-// Poll API 😕 to get updates from other users and tabs
-setInterval(() => refetch('/api/items'), 5000);
 ```
 
 ## Handle errors

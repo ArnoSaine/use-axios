@@ -1,3 +1,8 @@
+# 1.0.0
+
+- Fix ES module usage
+- Update TodoMVC example
+
 # 0.3.7
 
 - Fix `create` function. Return an object with named functions instead of an array.

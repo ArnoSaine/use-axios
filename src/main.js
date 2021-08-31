@@ -1,6 +1,6 @@
-import axios from 'axios';
 import { create as createUseAsync } from '@postinumero/use-async';
-import obsoleteWithReplacement from './utils/obsoleteWithReplacement';
+import axios from 'axios';
+import obsoleteWithReplacement from './utils/obsoleteWithReplacement.js';
 
 export const create = (config) => {
   const [useAxios, refetch, useAxiosSafe] = createUseAsync(
