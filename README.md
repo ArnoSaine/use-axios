@@ -123,21 +123,39 @@ Same as `axios`.
 
 #### Refetch example
 
-Remove user and update list of users:
+Add/remove user and update the list of users:
 
 ```js
 import { Suspense } from 'react';
 import { useAxios, refetch } from 'use-axios';
-import { delete as del } from 'axios';
+import { delete as del, post } from 'axios';
 
 function Users() {
   const { data } = useAxios('/api/users');
   return (
     <ul>
+      <UserForm />
       {data.map((user) => (
         <User key={user.id} {...user} />
       ))}
     </ul>
+  );
+}
+
+function UserForm() {
+  // ...
+  return (
+    <form
+      onSubmit={async (event) => {
+        event.preventDefault();
+        // Add user
+        await post('/api/users', user);
+        // Refetch paths that might have been affected by the POST request
+        await refetch('/api/users');
+      }}
+    >
+      ...
+    </form>
   );
 }
 
@@ -147,8 +165,9 @@ function User({ id, first_name }) {
       {first_name}
       <span
         onClick={async () => {
-          // Remove user and update list of users
+          // Remove user
           await del(`/api/users/${id}`);
+          // Refetch paths that might have been affected by the DELETE request
           refetch('/api/users');
         }}
       >
