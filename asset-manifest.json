@@ -1,28 +1,28 @@
 {
   "files": {
     "main.css": "/use-axios/static/css/main.e1b2a040.chunk.css",
-    "main.js": "/use-axios/static/js/main.a55b7f48.chunk.js",
-    "main.js.map": "/use-axios/static/js/main.a55b7f48.chunk.js.map",
-    "runtime-main.js": "/use-axios/static/js/runtime-main.75281ed0.js",
-    "runtime-main.js.map": "/use-axios/static/js/runtime-main.75281ed0.js.map",
-    "static/js/2.97c8de4a.chunk.js": "/use-axios/static/js/2.97c8de4a.chunk.js",
-    "static/js/2.97c8de4a.chunk.js.map": "/use-axios/static/js/2.97c8de4a.chunk.js.map",
+    "main.js": "/use-axios/static/js/main.e7bf4a51.chunk.js",
+    "main.js.map": "/use-axios/static/js/main.e7bf4a51.chunk.js.map",
+    "runtime-main.js": "/use-axios/static/js/runtime-main.5447364d.js",
+    "runtime-main.js.map": "/use-axios/static/js/runtime-main.5447364d.js.map",
+    "static/js/2.7bb27521.chunk.js": "/use-axios/static/js/2.7bb27521.chunk.js",
+    "static/js/2.7bb27521.chunk.js.map": "/use-axios/static/js/2.7bb27521.chunk.js.map",
     "static/css/3.dbe2c8eb.chunk.css": "/use-axios/static/css/3.dbe2c8eb.chunk.css",
-    "static/js/3.d69470c4.chunk.js": "/use-axios/static/js/3.d69470c4.chunk.js",
-    "static/js/3.d69470c4.chunk.js.map": "/use-axios/static/js/3.d69470c4.chunk.js.map",
-    "static/js/4.142f1ebb.chunk.js": "/use-axios/static/js/4.142f1ebb.chunk.js",
-    "static/js/4.142f1ebb.chunk.js.map": "/use-axios/static/js/4.142f1ebb.chunk.js.map",
+    "static/js/3.a5af7ad4.chunk.js": "/use-axios/static/js/3.a5af7ad4.chunk.js",
+    "static/js/3.a5af7ad4.chunk.js.map": "/use-axios/static/js/3.a5af7ad4.chunk.js.map",
+    "static/js/4.04dbc38f.chunk.js": "/use-axios/static/js/4.04dbc38f.chunk.js",
+    "static/js/4.04dbc38f.chunk.js.map": "/use-axios/static/js/4.04dbc38f.chunk.js.map",
     "index.html": "/use-axios/index.html",
     "static/css/3.dbe2c8eb.chunk.css.map": "/use-axios/static/css/3.dbe2c8eb.chunk.css.map",
     "static/css/main.e1b2a040.chunk.css.map": "/use-axios/static/css/main.e1b2a040.chunk.css.map",
-    "static/js/2.97c8de4a.chunk.js.LICENSE.txt": "/use-axios/static/js/2.97c8de4a.chunk.js.LICENSE.txt",
-    "static/js/3.d69470c4.chunk.js.LICENSE.txt": "/use-axios/static/js/3.d69470c4.chunk.js.LICENSE.txt"
+    "static/js/2.7bb27521.chunk.js.LICENSE.txt": "/use-axios/static/js/2.7bb27521.chunk.js.LICENSE.txt",
+    "static/js/3.a5af7ad4.chunk.js.LICENSE.txt": "/use-axios/static/js/3.a5af7ad4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.75281ed0.js",
+    "static/js/runtime-main.5447364d.js",
     "static/css/3.dbe2c8eb.chunk.css",
-    "static/js/3.d69470c4.chunk.js",
+    "static/js/3.a5af7ad4.chunk.js",
     "static/css/main.e1b2a040.chunk.css",
-    "static/js/main.a55b7f48.chunk.js"
+    "static/js/main.e7bf4a51.chunk.js"
   ]
 }
